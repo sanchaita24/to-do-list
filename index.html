@@ -28,8 +28,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         $(document).ready(function () {
-            console.log("it work");
-            var count = 0;
+            // var count = 0;
 
 
             $(".btn").click(() => {
@@ -44,7 +43,7 @@
 
                         let newdata = $(`<div><input type="text" value="${result}" class="text-center mt-3" autocomplete="off"><button class="edit"  id="${result}">Edit</button> <button class="delete"  id="${result}">Delect</button> <button class="save">Save</button></div>`);
                         $(".result").append(newdata);
-                        count++;
+                        // count++;
                         console.log("the count value is", count);
 
 
