@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <style>
-  
+
 </style>
 
 <body>
@@ -35,22 +35,53 @@
             $(".btn").click(() => {
                 $("#work").val(function () {
                     let result = $(this).val();
-                    if (result=="") {
-                        alert("Please enter the work");                        
+                    if (result == "") {
+                        alert("Please enter the work");
                         return;
-                        
+
                     }
                     else {
-                          
-                        let newdata = $(`<div><input type="text" value="${result}" class="text-center mt-3" autocomplete="off"><button class="delete"  id="${result}">Delect</button></div>`);
+
+                        let newdata = $(`<div><input type="text" value="${result}" class="text-center mt-3" autocomplete="off"><button class="edit"  id="${result}">Edit</button> <button class="delete"  id="${result}">Delect</button> <button class="save">Save</button></div>`);
                         $(".result").append(newdata);
                         count++;
                         console.log("the count value is", count);
-                        
+
 
                     }
 
                 });
+
+            });
+
+
+            $(document).on("click", ".edit", function () {
+
+                let editvalue = $(this).attr('id');
+                console.log(typeof editvalue);
+
+                console.log("Edit data value:", editvalue);
+                let childvalue = $(this).closest('div').find('input').val();
+                console.log("childvalue:", childvalue);
+                console.log(typeof childvalue);
+
+                if (childvalue == editvalue) {
+                    $(this).closest("div").find("input").val(" ");
+                    $(this).hide();
+                    $(this).siblings(".save").show();
+
+                }
+                else {
+                    alert("The childvalue and editvalue not match");
+                }
+
+            });
+
+            //   save button work
+            $(document).on("click", ".save", function () {
+               let savedata= $(this).closest("div").find("input").val();
+               console.log("the save data:",savedata);
+               
 
             });
 
@@ -60,9 +91,9 @@
                 let newvalue = $(this).attr('id');
                 console.log("newdata value:", newvalue);
                 $(this).parent().remove();
-                  count--;
-                  console.log("after delete the count is:",count);
-                  
+                count--;
+                console.log("after delete the count is:", count);
+
 
 
             });
